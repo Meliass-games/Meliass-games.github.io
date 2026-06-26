@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Développeur Gameplay</title>
+  <meta name="description" content="Portfolio développeur gameplay" />
+
+  <!-- Polices Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════ NAVIGATION ═══════ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo" id="site-name">Portfolio</a>
+    <div class="nav-links">
+      <a href="#projects" class="nav-link">Projets</a>
+      <a href="#skills"   class="nav-link">Compétences</a>
+      <a href="#contact"  class="nav-link">Contact</a>
+    </div>
+    <a href="cv.pdf" download class="btn btn-primary" id="nav-cv-link">
+      Télécharger le CV
+    </a>
+  </nav>
+
+  <!-- ══════════════════════════ HERO ═════════════ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="mono">01</span> À propos</p>
+        <h1 class="hero-name" id="hero-name">Prénom NOM</h1>
+        <p class="hero-title" id="hero-title">Développeur Gameplay</p>
+        <p class="hero-bio" id="hero-bio">Passionné de jeux vidéo et de systèmes.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+          <a href="#" target="_blank" rel="noopener" class="btn btn-outline" id="hero-github-link">
+            GitHub →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ COMPÉTENCES ══════ -->
+  <section id="skills" class="section section-bg">
+    <div class="container">
+      <p class="eyebrow"><span class="mono">02</span> Compétences</p>
+      <h2 class="section-title">Technologies maîtrisées</h2>
+      <div class="skills-grid" id="skills-grid">
+        <!-- Rempli automatiquement depuis SKILLS dans js/projects.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ PROJETS ══════════ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <p class="eyebrow"><span class="mono">03</span> Portfolio</p>
+      <h2 class="section-title">Mes projets</h2>
+      <p class="section-subtitle">
+        Cliquez sur un projet pour voir les captures d'écran, vidéos et description complète.
+      </p>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rempli automatiquement depuis PROJECTS dans js/projects.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ CONTACT ══════════ -->
+  <section id="contact" class="section section-bg">
+    <div class="container">
+      <p class="eyebrow"><span class="mono">04</span> Contact</p>
+      <h2 class="section-title">Me contacter</h2>
+      <p class="contact-intro" id="contact-intro">
+        Disponible pour des stages, alternances et opportunités en développement gameplay.
+      </p>
+      <div class="contact-cards">
+        <a href="#" class="contact-card" id="contact-email-link">
+          <span class="contact-card-label">Email</span>
+          <span class="contact-card-value" id="contact-email-text">—</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="contact-card" id="contact-github-link">
+          <span class="contact-card-label">GitHub</span>
+          <span class="contact-card-value">Voir mes repos →</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="contact-card" id="contact-linkedin-link">
+          <span class="contact-card-label">LinkedIn</span>
+          <span class="contact-card-value">Mon profil →</span>
+        </a>
+        <a href="cv.pdf" download class="contact-card" id="contact-cv-link">
+          <span class="contact-card-label">CV</span>
+          <span class="contact-card-value">Télécharger →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <p class="footer-name" id="footer-name">Portfolio</p>
+    <p class="footer-credit">Fait avec HTML, CSS &amp; JS · Hébergé sur GitHub Pages</p>
+  </footer>
+
+  <!-- ══════════════════════════ MODAL (popup projet) ═══ -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+      <button class="modal-close" id="modal-close" aria-label="Fermer">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Zone média : images et vidéo -->
+      <div class="modal-media" id="modal-media">
+        <div class="carousel-track" id="carousel-track">
+          <!-- Injecté par main.js -->
+        </div>
+        <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Précédent">&#8249;</button>
+        <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Suivant">&#8250;</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+
+      <!-- Contenu texte -->
+      <div class="modal-body">
+        <div class="modal-header">
+          <div class="modal-meta">
+            <div class="modal-tags" id="modal-tags"></div>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <p class="modal-date mono" id="modal-date"></p>
+          </div>
+          <a href="#" target="_blank" rel="noopener" class="btn btn-primary modal-github-btn" id="modal-github-btn">
+            GitHub →
+          </a>
+        </div>
+        <p class="modal-description" id="modal-description"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⚠️ projects.js DOIT être avant main.js -->
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
