@@ -14,17 +14,15 @@
 
 // ── 1. INFOS PERSONNELLES ───────────────────────────────────
 const SITE_CONFIG = {
-  name:     "Prénom NOM",                         // Ton nom complet
+  name:     "Bastien Motte",                         // Ton nom complet
   title:    "Développeur Gameplay",               // Ton titre pro
   bio:      "Passionné de jeux vidéo et de " +
-            "systèmes, je conçois des mécaniques " +
-            "de jeu depuis 2 ans — du jeu console " +
-            "en C++ à l'ébauche de mon propre " +
-            "moteur, en passant par Unity et " +
-            "Unreal Engine.",                     // Bio courte (2-3 phrases)
-  email:    "prenom.nom@email.com",               // Ton adresse email
-  github:   "https://github.com/ton-pseudo",      // Ton profil GitHub
-  linkedin: "https://linkedin.com/in/ton-pseudo", // Ton LinkedIn (ou "" pour masquer)
+            "systèmes, je conçois des systèmes, des mécaniques " +
+            "de jeu et des expériences virtuelles depuis 2 ans " +
+            "en Python, C++ et C#, sur Unity ou Unreal Engine",                   // Bio courte (2-3 phrases)
+  email:    "b.motte2002@laposte.net",               // Ton adresse email
+  github:   "https://github.com/Meliass-games",      // Ton profil GitHub
+  linkedin: "", // Ton LinkedIn (ou "" pour masquer)
   cv:       "cv.pdf",                             // Nom de ton fichier CV
 };
 
