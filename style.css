@@ -1,9 +1,8 @@
 /* ============================================================
-   style.css — Design du portfolio
-   Palette : blanc + gris slate + violet #7C3AED
-   Typo    : Space Grotesk (titres) · Inter (corps) · JetBrains Mono (code)
-   Signature : fond en grille de points dans le hero
-               (référence aux grilles de coordonnées des moteurs de jeu)
+   style.css — Portfolio Bastien Motte
+   Palette : parchemin chaud · brun foncé · or rouille
+   Typo    : Playfair Display (titres) · Inter (corps) · JetBrains Mono
+   Signature : grille de lignes style vieille carte géographique dans le hero
 ============================================================ */
 
 
@@ -11,35 +10,36 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Couleurs */
-  --bg:              #F8FAFC;   /* Fond général (gris slate très clair) */
-  --surface:         #FFFFFF;   /* Surfaces blanches (cards, nav…)      */
-  --border:          #E2E8F0;   /* Bordures                             */
-  --border-light:    #F1F5F9;   /* Bordures encore plus légères         */
+  /* Couleurs — palette parchemin */
+  --bg:              #EDE3CC;   /* Parchemin principal                  */
+  --surface:         #F8F2E3;   /* Surfaces (cards, nav…)               */
+  --surface-alt:     #F2EAD4;   /* Surface légèrement plus sombre       */
+  --border:          #C8B48A;   /* Bordures chaleureuses                */
+  --border-light:    #DDD0B2;   /* Bordures légères                     */
 
-  --text-primary:    #0F172A;   /* Texte principal (quasi-noir)         */
-  --text-secondary:  #64748B;   /* Texte secondaire                     */
-  --text-tertiary:   #94A3B8;   /* Labels, dates, etc.                  */
+  --text-primary:    #231206;   /* Brun très foncé                      */
+  --text-secondary:  #6B4E2A;   /* Brun moyen                           */
+  --text-tertiary:   #9B7B50;   /* Brun clair / tertiary                */
 
-  --accent:          #7C3AED;   /* Violet — couleur principale          */
-  --accent-hover:    #6D28D9;   /* Violet au survol                     */
-  --accent-bg:       #F5F3FF;   /* Fond violet très clair               */
-  --accent-border:   #DDD6FE;   /* Bordure violette légère              */
+  --accent:          #8B5E18;   /* Or rouille — couleur du CV           */
+  --accent-hover:    #7A5012;   /* Or rouille foncé                     */
+  --accent-bg:       #EEE0C0;   /* Fond doré très clair                 */
+  --accent-border:   #C8A060;   /* Bordure dorée                        */
 
   /* Typographie */
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Mono', monospace;
 
   /* Formes */
-  --radius-sm: 6px;
-  --radius:    12px;
-  --radius-lg: 16px;
+  --radius-sm: 4px;
+  --radius:    10px;
+  --radius-lg: 14px;
 
-  /* Ombres */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-  --shadow:    0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
-  --shadow-lg: 0 20px 48px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.06);
+  /* Ombres chaudes */
+  --shadow-sm: 0 1px 3px rgba(35, 18, 6, .08), 0 1px 2px rgba(35, 18, 6, .05);
+  --shadow:    0 4px 12px rgba(35, 18, 6, .10), 0 2px 4px rgba(35, 18, 6, .06);
+  --shadow-lg: 0 20px 48px rgba(35, 18, 6, .14), 0 8px 16px rgba(35, 18, 6, .08);
 
   --transition: .2s ease;
 }
@@ -81,7 +81,7 @@ a { color: inherit; }
   gap: 6px;
   padding: 10px 22px;
   border-radius: var(--radius-sm);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: .875rem;
   font-weight: 600;
   text-decoration: none;
@@ -90,11 +90,12 @@ a { color: inherit; }
   transition: background var(--transition), color var(--transition),
               border-color var(--transition), transform var(--transition);
   white-space: nowrap;
+  letter-spacing: .01em;
 }
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: #FAF2E3;
 }
 .btn-primary:hover {
   background: var(--accent-hover);
@@ -139,10 +140,10 @@ a { color: inherit; }
 }
 
 .nav.scrolled {
-  background: rgba(255, 255, 255, .92);
+  background: rgba(248, 242, 227, .92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-light);
   padding: 12px 40px;
   box-shadow: var(--shadow-sm);
 }
@@ -150,7 +151,7 @@ a { color: inherit; }
 .nav-logo {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: .95rem;
+  font-size: 1rem;
   letter-spacing: -.01em;
   text-decoration: none;
   color: var(--text-primary);
@@ -163,25 +164,28 @@ a { color: inherit; }
 }
 
 .nav-link {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: .875rem;
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color var(--transition);
 }
-.nav-link:hover { color: var(--text-primary); }
+.nav-link:hover { color: var(--accent); }
 
 
 /* ── Hero ────────────────────────────────────────────────── */
-/* Signature : grille de points (référence aux coordonnées des moteurs 3D) */
+/* Signature : grille de lignes fines style vieille carte géographique */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   background-color: var(--surface);
-  background-image: radial-gradient(circle, rgba(124, 58, 237, .1) 1px, transparent 1px);
-  background-size: 26px 26px;
+  background-image:
+    linear-gradient(rgba(139, 94, 24, .09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 94, 24, .09) 1px, transparent 1px),
+    radial-gradient(ellipse at center, transparent 50%, rgba(35, 18, 6, .07) 100%);
+  background-size: 44px 44px, 44px 44px, 100% 100%;
   border-bottom: 1px solid var(--border);
   padding: 120px 0 80px;
 }
@@ -219,15 +223,17 @@ a { color: inherit; }
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 700;
   line-height: 1.08;
-  letter-spacing: -.03em;
+  letter-spacing: -.02em;
   margin-bottom: 14px;
+  color: var(--text-primary);
 }
 
 .hero-title {
   font-family: var(--font-display);
   font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
   margin-bottom: 22px;
 }
 
@@ -253,15 +259,18 @@ a { color: inherit; }
 }
 
 .section-bg {
-  background: var(--surface);
+  background: var(--surface-alt);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .section-title {
   font-family: var(--font-display);
   font-size: 1.9rem;
   font-weight: 700;
-  letter-spacing: -.02em;
+  letter-spacing: -.01em;
   margin-bottom: 10px;
+  color: var(--text-primary);
 }
 
 .section-subtitle {
@@ -291,7 +300,7 @@ a { color: inherit; }
   align-items: center;
   gap: 12px;
   padding: 10px 18px;
-  background: var(--bg);
+  background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   transition: border-color var(--transition), box-shadow var(--transition);
@@ -345,11 +354,10 @@ a { color: inherit; }
   outline: none;
 }
 
-/* Zone image de la carte */
 .card-media {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: var(--border-light, #F1F5F9);
+  background: var(--accent-bg);
   overflow: hidden;
 }
 
@@ -364,7 +372,6 @@ a { color: inherit; }
   transform: scale(1.04);
 }
 
-/* Placeholder quand pas d'image */
 .card-placeholder {
   width: 100%;
   height: 100%;
@@ -378,7 +385,6 @@ a { color: inherit; }
   font-weight: 600;
 }
 
-/* Tags sur la carte (en bas de l'image) */
 .card-tags {
   position: absolute;
   bottom: 10px;
@@ -388,7 +394,6 @@ a { color: inherit; }
   gap: 5px;
 }
 
-/* Corps de la carte */
 .card-body {
   padding: 20px;
   display: flex;
@@ -404,10 +409,11 @@ a { color: inherit; }
 
 .card-title {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -.01em;
   margin-bottom: 8px;
+  color: var(--text-primary);
 }
 
 .card-desc {
@@ -423,7 +429,7 @@ a { color: inherit; }
 }
 
 .card-cta {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: .82rem;
   font-weight: 600;
   color: var(--accent);
@@ -449,7 +455,7 @@ a { color: inherit; }
   flex-direction: column;
   gap: 4px;
   padding: 18px 24px;
-  background: var(--bg);
+  background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
   text-decoration: none;
@@ -491,7 +497,7 @@ a { color: inherit; }
 .footer-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: .9rem;
+  font-size: .95rem;
   margin-bottom: 4px;
   color: var(--text-primary);
 }
@@ -509,7 +515,7 @@ a { color: inherit; }
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(15, 23, 42, .65);
+  background: rgba(35, 18, 6, .65);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   align-items: center;
@@ -521,7 +527,6 @@ a { color: inherit; }
   display: flex;
 }
 
-/* Fenêtre du modal */
 .modal {
   background: var(--surface);
   border-radius: var(--radius-lg);
@@ -531,9 +536,9 @@ a { color: inherit; }
   overflow-y: auto;
   box-shadow: var(--shadow-lg);
   position: relative;
+  border: 1px solid var(--border);
 }
 
-/* Bouton fermer */
 .modal-close {
   position: absolute;
   top: 14px;
@@ -542,24 +547,24 @@ a { color: inherit; }
   width: 34px;
   height: 34px;
   border: none;
-  background: rgba(255, 255, 255, .15);
+  background: rgba(35, 18, 6, .25);
   backdrop-filter: blur(4px);
   border-radius: 50%;
   cursor: pointer;
-  color: white;
+  color: #FAF2E3;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background var(--transition);
 }
-.modal-close:hover { background: rgba(255, 255, 255, .3); }
+.modal-close:hover { background: rgba(35, 18, 6, .45); }
 
 
 /* ── Carousel ────────────────────────────────────────────── */
 .modal-media {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: #0F172A;
+  background: #1A0F04;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   overflow: hidden;
 }
@@ -569,7 +574,6 @@ a { color: inherit; }
   height: 100%;
 }
 
-/* Slides : cachées par défaut, visibles si .active */
 .slide {
   display: none;
   width: 100%;
@@ -596,23 +600,22 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,.4);
+  color: rgba(250, 242, 227, .35);
   font-family: var(--font-mono);
   font-size: .8rem;
 }
 
-/* Boutons prev / next */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 42px;
   height: 42px;
-  background: rgba(255, 255, 255, .15);
+  background: rgba(35, 18, 6, .35);
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, .2);
+  border: 1px solid rgba(250, 242, 227, .15);
   border-radius: 50%;
-  color: white;
+  color: #FAF2E3;
   font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
@@ -622,11 +625,10 @@ a { color: inherit; }
   transition: background var(--transition);
   z-index: 5;
 }
-.carousel-btn:hover { background: rgba(255, 255, 255, .3); }
+.carousel-btn:hover { background: rgba(35, 18, 6, .6); }
 .carousel-prev { left: 14px; }
 .carousel-next { right: 14px; }
 
-/* Points de navigation */
 .carousel-dots {
   position: absolute;
   bottom: 12px;
@@ -640,14 +642,14 @@ a { color: inherit; }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .35);
+  background: rgba(250, 242, 227, .35);
   border: none;
   cursor: pointer;
   transition: background var(--transition), transform var(--transition);
   padding: 0;
 }
 .dot.active {
-  background: white;
+  background: #FAF2E3;
   transform: scale(1.35);
 }
 
@@ -680,10 +682,11 @@ a { color: inherit; }
 
 .modal-title {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -.02em;
+  letter-spacing: -.01em;
   margin-bottom: 4px;
+  color: var(--text-primary);
 }
 
 .modal-date {
@@ -695,7 +698,7 @@ a { color: inherit; }
   font-size: .95rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  white-space: pre-line;  /* Respecte les \n\n dans fullDescription */
+  white-space: pre-line;
 }
 
 
@@ -703,7 +706,7 @@ a { color: inherit; }
 @media (max-width: 900px) {
   .nav { padding: 14px 24px; }
   .nav.scrolled { padding: 10px 24px; }
-  .nav-links { display: none; } /* Sur mobile : juste logo + bouton CV */
+  .nav-links { display: none; }
 }
 
 @media (max-width: 640px) {
@@ -718,7 +721,6 @@ a { color: inherit; }
   .modal-github-btn { align-self: flex-start; }
 }
 
-/* Accessibilité : respect du paramètre "préférence de mouvement réduit" */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: .01ms !important;

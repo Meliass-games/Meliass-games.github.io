@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Développeur Gameplay</title>
-  <meta name="description" content="Portfolio développeur gameplay" />
+  <title>Portfolio — Bastien Motte</title>
+  <meta name="description" content="Portfolio de Bastien Motte, développeur gameplay junior" />
 
-  <!-- Polices Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -33,9 +32,9 @@
     <div class="container hero-inner">
       <div class="hero-content">
         <p class="eyebrow"><span class="mono">01</span> À propos</p>
-        <h1 class="hero-name" id="hero-name">Prénom NOM</h1>
-        <p class="hero-title" id="hero-title">Développeur Gameplay</p>
-        <p class="hero-bio" id="hero-bio">Passionné de jeux vidéo et de systèmes.</p>
+        <h1 class="hero-name" id="hero-name">Bastien Motte</h1>
+        <p class="hero-title" id="hero-title">Développeur Gameplay Junior</p>
+        <p class="hero-bio" id="hero-bio">Bio</p>
         <div class="hero-cta">
           <a href="#projects" class="btn btn-primary">Voir mes projets</a>
           <a href="#" target="_blank" rel="noopener" class="btn btn-outline" id="hero-github-link">
@@ -51,9 +50,7 @@
     <div class="container">
       <p class="eyebrow"><span class="mono">02</span> Compétences</p>
       <h2 class="section-title">Technologies maîtrisées</h2>
-      <div class="skills-grid" id="skills-grid">
-        <!-- Rempli automatiquement depuis SKILLS dans js/projects.js -->
-      </div>
+      <div class="skills-grid" id="skills-grid"></div>
     </div>
   </section>
 
@@ -65,9 +62,7 @@
       <p class="section-subtitle">
         Cliquez sur un projet pour voir les captures d'écran, vidéos et description complète.
       </p>
-      <div class="projects-grid" id="projects-grid">
-        <!-- Rempli automatiquement depuis PROJECTS dans js/projects.js -->
-      </div>
+      <div class="projects-grid" id="projects-grid"></div>
     </div>
   </section>
 
@@ -77,7 +72,7 @@
       <p class="eyebrow"><span class="mono">04</span> Contact</p>
       <h2 class="section-title">Me contacter</h2>
       <p class="contact-intro" id="contact-intro">
-        Disponible pour des stages, alternances et opportunités en développement gameplay.
+        Disponible pour des alternances en développement gameplay — 2026/2027 et 2027/2028.
       </p>
       <div class="contact-cards">
         <a href="#" class="contact-card" id="contact-email-link">
@@ -102,11 +97,11 @@
 
   <!-- ══════════════════════════ FOOTER ═══════════ -->
   <footer class="footer">
-    <p class="footer-name" id="footer-name">Portfolio</p>
+    <p class="footer-name" id="footer-name">Bastien Motte</p>
     <p class="footer-credit">Fait avec HTML, CSS &amp; JS · Hébergé sur GitHub Pages</p>
   </footer>
 
-  <!-- ══════════════════════════ MODAL (popup projet) ═══ -->
+  <!-- ══════════════════════════ MODAL ════════════ -->
   <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
 
@@ -116,17 +111,13 @@
         </svg>
       </button>
 
-      <!-- Zone média : images et vidéo -->
       <div class="modal-media" id="modal-media">
-        <div class="carousel-track" id="carousel-track">
-          <!-- Injecté par main.js -->
-        </div>
+        <div class="carousel-track" id="carousel-track"></div>
         <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Précédent">&#8249;</button>
         <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Suivant">&#8250;</button>
         <div class="carousel-dots" id="carousel-dots"></div>
       </div>
 
-      <!-- Contenu texte -->
       <div class="modal-body">
         <div class="modal-header">
           <div class="modal-meta">
@@ -144,7 +135,6 @@
     </div>
   </div>
 
-  <!-- ⚠️ projects.js DOIT être avant main.js -->
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
 </body>
