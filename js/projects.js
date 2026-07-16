@@ -153,9 +153,9 @@ const PROJECTS = [
             "la résistance et le comportement à la fracture des matériaux.\n\n" +
             "Un build jouable est disponible directement dans le repo (AngryBird.zip).",
         images: [
-            "img/projects/happy-bird/screen1.png",
-            "img/projects/happy-bird/screen2.png",
-            "img/projects/happy-bird/screen3.png",
+            "img/projects/happy_bird/screen1.png",
+            "img/projects/happy_bird/screen2.png",
+            "img/projects/happy_bird/screen3.png",
         ],
         video: null,
         github: "https://github.com/Meliass-games/AngryBirds-Like",
