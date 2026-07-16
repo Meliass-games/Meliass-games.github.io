@@ -234,7 +234,7 @@ const PROJECTS = [
             "habillé d'un concept minimaliste : trouver et éliminer un ennemi " +
             "apparu dans une prairie.\n\n" +
             "L'accent est entièrement mis sur le rendu visuel : herbe animée par shader, " +
-            "effets de lumière sur l'épée enchantée, particules VFX sur les impacts. " +
+            "effets de lumière sur l'épée enchantée, particules VFX sur le joueur. " +
             "Note : les shaders sont gourmands en ressources — c'est volontaire, " +
             "l'objectif étant de pousser les outils dans leurs retranchements.",
         images: [
