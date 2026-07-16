@@ -19,7 +19,7 @@ const SITE_CONFIG = {
         "Bachelor Développeur Informatique option Jeu Vidéo, je " +
         "recherche une alternance pour les années 2026/2027 et 2027/2028.",
     email: "b.motte2002@gmail.com",
-    github: "https://github.com/ton-pseudo",          // ← remplace par ton vrai pseudo GitHub
+    github: "https://github.com/Mellias-dev",          // ← remplace par ton vrai pseudo GitHub
     linkedin: "https://linkedin.com/in/bastien-motte-42522524a",
     cv: "cv.pdf",
 };
