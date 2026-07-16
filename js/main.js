@@ -5,27 +5,63 @@
 
 "use strict";
 
-// ── État du carousel ────────────────────────────────────────
+// ── État global ─────────────────────────────────────────────
 let carouselItems = [];
 let currentSlide  = 0;
+let currentLang   = localStorage.getItem("portfolio-lang") || "fr";
 
 
 // ══════════════════════════════════════════════════════════════
-//  1. CONFIG — Applique les infos de SITE_CONFIG dans le DOM
+//  1. TRADUCTION — Helpers
+// ══════════════════════════════════════════════════════════════
+
+// Raccourci pour récupérer une chaîne traduite
+function T(key) {
+  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key])
+    || (TRANSLATIONS["fr"] && TRANSLATIONS["fr"][key])
+    || key;
+}
+
+// Met à jour tous les éléments portant data-i18n
+function applyI18n() {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    el.textContent = T(key);
+  });
+}
+
+// Bascule la langue et rafraîchit tout
+function toggleLang() {
+  currentLang = currentLang === "fr" ? "en" : "fr";
+  localStorage.setItem("portfolio-lang", currentLang);
+  document.documentElement.lang = currentLang;
+
+  const btn = document.getElementById("lang-toggle");
+  if (btn) btn.textContent = currentLang === "fr" ? "EN" : "FR";
+
+  applyI18n();
+  applyConfig();       // Recharge bio / titre dans la bonne langue
+  renderProjects();    // Recharge les cartes (texte CTA traduit)
+}
+
+
+// ══════════════════════════════════════════════════════════════
+//  2. CONFIG — Applique les infos de SITE_CONFIG dans le DOM
 // ══════════════════════════════════════════════════════════════
 function applyConfig() {
   const c = SITE_CONFIG;
 
-  // <title> du navigateur
-  document.title = `${c.name} — ${c.title}`;
+  // <title> + lang du document
+  document.title      = `${c.name} — ${currentLang === "en" ? c.title_en || c.title : c.title}`;
+  document.documentElement.lang = currentLang;
 
   // Navigation
   setTextById("site-name", c.name);
 
   // Hero
-  setTextById("hero-name", c.name);
-  setTextById("hero-title", c.title);
-  setTextById("hero-bio", c.bio);
+  setTextById("hero-name",  c.name);
+  setTextById("hero-title", currentLang === "en" ? (c.title_en || c.title) : c.title);
+  setTextById("hero-bio",   currentLang === "en" ? (c.bio_en   || c.bio)   : c.bio);
   setHrefById("hero-github-link", c.github);
   setHrefById("nav-cv-link", c.cv);
 
@@ -38,20 +74,22 @@ function applyConfig() {
   if (c.linkedin) {
     setHrefById("contact-linkedin-link", c.linkedin);
   } else {
-    // Cache la carte LinkedIn si pas renseigné
     const el = document.getElementById("contact-linkedin-link");
     if (el) el.style.display = "none";
   }
 
   // Footer
   setTextById("footer-name", c.name);
+
+  // Bouton de langue — affiche l'autre langue disponible
+  const btn = document.getElementById("lang-toggle");
+  if (btn) btn.textContent = currentLang === "fr" ? "EN" : "FR";
 }
 
 function setTextById(id, text) {
   const el = document.getElementById(id);
   if (el) el.textContent = text;
 }
-
 function setHrefById(id, href) {
   const el = document.getElementById(id);
   if (el) el.href = href;
@@ -59,7 +97,7 @@ function setHrefById(id, href) {
 
 
 // ══════════════════════════════════════════════════════════════
-//  2. COMPÉTENCES
+//  3. COMPÉTENCES
 // ══════════════════════════════════════════════════════════════
 function renderSkills() {
   const grid = document.getElementById("skills-grid");
@@ -75,10 +113,10 @@ function renderSkills() {
 
 
 // ══════════════════════════════════════════════════════════════
-//  3. PROJETS — Rendu des cartes
+//  4. PROJETS — Rendu des cartes
 // ══════════════════════════════════════════════════════════════
 function tagHTML(tag) {
-  const colors = TAG_COLORS[tag] || { bg: "#F1F5F9", text: "#475569" };
+  const colors = TAG_COLORS[tag] || { bg: "#EDE8D0", text: "#5A4810" };
   return `<span class="tag" style="background:${colors.bg};color:${colors.text}">${tag}</span>`;
 }
 
@@ -113,7 +151,7 @@ function renderProjects() {
         data-index="${index}"
         tabindex="0"
         role="button"
-        aria-label="Voir le projet : ${project.title}"
+        aria-label="${project.title}"
       >
         <div class="card-media">
           ${thumb}
@@ -123,47 +161,44 @@ function renderProjects() {
           <p class="card-date mono">${project.date}</p>
           <h3 class="card-title">${project.title}</h3>
           <p class="card-desc">${project.shortDescription}</p>
-          <span class="card-cta">Voir le projet →</span>
+          <span class="card-cta">${T("card_cta")}</span>
         </div>
       </article>
     `;
   }).join("");
 
-  // Événements : clic et clavier
   grid.querySelectorAll(".project-card").forEach(card => {
-    card.addEventListener("click", () => openModal(parseInt(card.dataset.index)));
+    card.addEventListener("click",   () => openModal(parseInt(card.dataset.index)));
     card.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openModal(parseInt(card.dataset.index));
-      }
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(parseInt(card.dataset.index)); }
     });
   });
 }
 
 
 // ══════════════════════════════════════════════════════════════
-//  4. MODAL — Ouverture / fermeture
+//  5. MODAL
 // ══════════════════════════════════════════════════════════════
 function openModal(index) {
   const project = PROJECTS[index];
   if (!project) return;
 
-  // Remplir les infos texte
   document.getElementById("modal-title").textContent       = project.title;
   document.getElementById("modal-date").textContent        = project.date;
   document.getElementById("modal-description").textContent = project.fullDescription;
-  document.getElementById("modal-github-btn").href         = project.github;
+  document.getElementById("modal-github-btn").href         = project.github || "#";
   document.getElementById("modal-tags").innerHTML          = project.tags.map(tagHTML).join("");
 
-  // Construire la liste de médias (vidéo en premier si présente)
+  // Masquer le bouton GitHub si pas de lien
+  const ghBtn = document.getElementById("modal-github-btn");
+  if (ghBtn) ghBtn.style.display = project.github ? "" : "none";
+
   carouselItems = [];
-  if (project.video) carouselItems.push({ type: "video", src: project.video });
+  if (project.video)  carouselItems.push({ type: "video", src: project.video });
   if (project.images) project.images.forEach(src => carouselItems.push({ type: "image", src }));
 
   renderCarousel();
 
-  // Afficher
   const overlay = document.getElementById("modal-overlay");
   overlay.classList.add("active");
   overlay.removeAttribute("aria-hidden");
@@ -176,14 +211,12 @@ function closeModal() {
   overlay.classList.remove("active");
   overlay.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
-
-  // Vider le carousel (stoppe les vidéos YouTube)
   document.getElementById("carousel-track").innerHTML = "";
 }
 
 
 // ══════════════════════════════════════════════════════════════
-//  5. CAROUSEL
+//  6. CAROUSEL
 // ══════════════════════════════════════════════════════════════
 function renderCarousel() {
   const track   = document.getElementById("carousel-track");
@@ -199,29 +232,21 @@ function renderCarousel() {
     return;
   }
 
-  // Créer les slides
   track.innerHTML = carouselItems.map((item, i) => {
     if (item.type === "video") {
       return `<div class="slide" data-i="${i}">
-        <iframe
-          src="${item.src}"
-          frameborder="0"
+        <iframe src="${item.src}" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          class="slide-video"
-          title="Vidéo du projet"
-        ></iframe>
-      </div>`;
-    } else {
-      return `<div class="slide" data-i="${i}">
-        <img src="${item.src}" alt="Screenshot ${i + 1}" class="slide-img"
-             onerror="this.src=''; this.alt='Image non trouvée'" />
+          allowfullscreen class="slide-video" title="Vidéo du projet"></iframe>
       </div>`;
     }
+    return `<div class="slide" data-i="${i}">
+      <img src="${item.src}" alt="Screenshot ${i + 1}" class="slide-img"
+           onerror="this.src=''; this.alt='Image non trouvée'" />
+    </div>`;
   }).join("");
 
-  // Points de navigation
-  const showNav = carouselItems.length > 1;
+  const showNav  = carouselItems.length > 1;
   prevBtn.hidden = !showNav;
   nextBtn.hidden = !showNav;
 
@@ -229,10 +254,7 @@ function renderCarousel() {
     ? carouselItems.map((_, i) => `<button class="dot" aria-label="Slide ${i + 1}"></button>`).join("")
     : "";
 
-  dots.querySelectorAll(".dot").forEach((dot, i) => {
-    dot.addEventListener("click", () => goTo(i));
-  });
-
+  dots.querySelectorAll(".dot").forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
   prevBtn.onclick = () => goTo(currentSlide - 1);
   nextBtn.onclick = () => goTo(currentSlide + 1);
 
@@ -243,45 +265,39 @@ function goTo(i) {
   const slides = document.querySelectorAll(".slide");
   const dots   = document.querySelectorAll(".dot");
   if (!slides.length) return;
-
   currentSlide = (i + slides.length) % slides.length;
-
   slides.forEach((s, idx) => s.classList.toggle("active", idx === currentSlide));
   dots.forEach((d, idx)   => d.classList.toggle("active", idx === currentSlide));
 }
 
 
 // ══════════════════════════════════════════════════════════════
-//  6. NAVIGATION — Effet de scroll
+//  7. NAVIGATION — Effet scroll
 // ══════════════════════════════════════════════════════════════
 function initNav() {
   const nav = document.getElementById("nav");
   const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 30);
   window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll(); // Appliquer au chargement
+  onScroll();
 }
 
 
 // ══════════════════════════════════════════════════════════════
-//  7. EVENT LISTENERS GLOBAUX
+//  8. EVENT LISTENERS
 // ══════════════════════════════════════════════════════════════
 document.getElementById("modal-close").addEventListener("click", closeModal);
-
-// Clic en dehors du modal → fermer
 document.getElementById("modal-overlay").addEventListener("click", e => {
   if (e.target === e.currentTarget) closeModal();
 });
-
-// Touche Echap → fermer
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeModal();
-});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+document.getElementById("lang-toggle").addEventListener("click", toggleLang);
 
 
 // ══════════════════════════════════════════════════════════════
-//  8. INITIALISATION
+//  9. INITIALISATION
 // ══════════════════════════════════════════════════════════════
 applyConfig();
+applyI18n();
 renderSkills();
 renderProjects();
 initNav();

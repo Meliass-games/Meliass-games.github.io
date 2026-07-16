@@ -148,6 +148,31 @@ a { color: inherit; }
   box-shadow: var(--shadow-sm);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-lang {
+  padding: 8px 14px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  min-width: 46px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), color var(--transition);
+}
+.btn-lang:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .nav-logo {
   font-family: var(--font-display);
   font-weight: 700;

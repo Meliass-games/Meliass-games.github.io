@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Bastien Motte</title>
-  <meta name="description" content="Portfolio de Bastien Motte, développeur gameplay junior" />
+  <title>Portfolio — Développeur Gameplay</title>
+  <meta name="description" content="Portfolio développeur gameplay" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,25 +18,28 @@
   <nav class="nav" id="nav">
     <a href="#" class="nav-logo" id="site-name">Portfolio</a>
     <div class="nav-links">
-      <a href="#projects" class="nav-link">Projets</a>
-      <a href="#skills"   class="nav-link">Compétences</a>
-      <a href="#contact"  class="nav-link">Contact</a>
+      <a href="#projects" class="nav-link" data-i18n="nav_projects">Projets</a>
+      <a href="#skills"   class="nav-link" data-i18n="nav_skills">Compétences</a>
+      <a href="#contact"  class="nav-link" data-i18n="nav_contact">Contact</a>
     </div>
-    <a href="cv.pdf" download class="btn btn-primary" id="nav-cv-link">
-      Télécharger le CV
-    </a>
+    <div class="nav-right">
+      <button class="btn btn-lang" id="lang-toggle" aria-label="Switch language">EN</button>
+      <a href="cv.pdf" download class="btn btn-primary" id="nav-cv-link" data-i18n="nav_cv">
+        Télécharger le CV
+      </a>
+    </div>
   </nav>
 
   <!-- ══════════════════════════ HERO ═════════════ -->
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-content">
-        <p class="eyebrow"><span class="mono">01</span> À propos</p>
-        <h1 class="hero-name" id="hero-name">Bastien Motte</h1>
-        <p class="hero-title" id="hero-title">Développeur Gameplay Junior</p>
+        <p class="eyebrow"><span class="mono">01</span> <span data-i18n="about_label">À propos</span></p>
+        <h1 class="hero-name" id="hero-name">Prénom NOM</h1>
+        <p class="hero-title" id="hero-title">Développeur Gameplay</p>
         <p class="hero-bio" id="hero-bio">Bio</p>
         <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+          <a href="#projects" class="btn btn-primary" data-i18n="hero_cta">Voir mes projets</a>
           <a href="#" target="_blank" rel="noopener" class="btn btn-outline" id="hero-github-link">
             GitHub →
           </a>
@@ -48,31 +51,35 @@
   <!-- ══════════════════════════ COMPÉTENCES ══════ -->
   <section id="skills" class="section section-bg">
     <div class="container">
-      <p class="eyebrow"><span class="mono">02</span> Compétences</p>
-      <h2 class="section-title">Technologies maîtrisées</h2>
-      <div class="skills-grid" id="skills-grid"></div>
+      <p class="eyebrow"><span class="mono">02</span> <span data-i18n="skills_label">Compétences</span></p>
+      <h2 class="section-title" data-i18n="skills_title">Technologies maîtrisées</h2>
+      <div class="skills-grid" id="skills-grid">
+        <!-- Rempli automatiquement depuis SKILLS dans js/projects.js -->
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════ PROJETS ══════════ -->
   <section id="projects" class="section">
     <div class="container">
-      <p class="eyebrow"><span class="mono">03</span> Portfolio</p>
-      <h2 class="section-title">Mes projets</h2>
-      <p class="section-subtitle">
+      <p class="eyebrow"><span class="mono">03</span> <span data-i18n="portfolio_label">Portfolio</span></p>
+      <h2 class="section-title" data-i18n="projects_title">Mes projets</h2>
+      <p class="section-subtitle" data-i18n="projects_subtitle">
         Cliquez sur un projet pour voir les captures d'écran, vidéos et description complète.
       </p>
-      <div class="projects-grid" id="projects-grid"></div>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rempli automatiquement depuis PROJECTS dans js/projects.js -->
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════ CONTACT ══════════ -->
   <section id="contact" class="section section-bg">
     <div class="container">
-      <p class="eyebrow"><span class="mono">04</span> Contact</p>
-      <h2 class="section-title">Me contacter</h2>
-      <p class="contact-intro" id="contact-intro">
-        Disponible pour des alternances en développement gameplay — 2026/2027 et 2027/2028.
+      <p class="eyebrow"><span class="mono">04</span> <span data-i18n="contact_label">Contact</span></p>
+      <h2 class="section-title" data-i18n="contact_title">Me contacter</h2>
+      <p class="contact-intro" id="contact-intro" data-i18n="contact_intro">
+        Disponible pour des stages, alternances et opportunités en développement gameplay.
       </p>
       <div class="contact-cards">
         <a href="#" class="contact-card" id="contact-email-link">
@@ -81,15 +88,15 @@
         </a>
         <a href="#" target="_blank" rel="noopener" class="contact-card" id="contact-github-link">
           <span class="contact-card-label">GitHub</span>
-          <span class="contact-card-value">Voir mes repos →</span>
+          <span class="contact-card-value" data-i18n="github_value">Voir mes repos →</span>
         </a>
         <a href="#" target="_blank" rel="noopener" class="contact-card" id="contact-linkedin-link">
           <span class="contact-card-label">LinkedIn</span>
-          <span class="contact-card-value">Mon profil →</span>
+          <span class="contact-card-value" data-i18n="linkedin_value">Mon profil →</span>
         </a>
         <a href="cv.pdf" download class="contact-card" id="contact-cv-link">
-          <span class="contact-card-label">CV</span>
-          <span class="contact-card-value">Télécharger →</span>
+          <span class="contact-card-label" data-i18n="cv_label">CV</span>
+          <span class="contact-card-value" data-i18n="cv_value">Télécharger →</span>
         </a>
       </div>
     </div>
@@ -97,11 +104,11 @@
 
   <!-- ══════════════════════════ FOOTER ═══════════ -->
   <footer class="footer">
-    <p class="footer-name" id="footer-name">Bastien Motte</p>
-    <p class="footer-credit">Fait avec HTML, CSS &amp; JS · Hébergé sur GitHub Pages</p>
+    <p class="footer-name" id="footer-name">Portfolio</p>
+    <p class="footer-credit" data-i18n="footer_credit">Fait avec HTML, CSS &amp; JS · Hébergé sur GitHub Pages</p>
   </footer>
 
-  <!-- ══════════════════════════ MODAL ════════════ -->
+  <!-- ══════════════════════════ MODAL ═══════════════ -->
   <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
 
@@ -135,6 +142,7 @@
     </div>
   </div>
 
+  <!-- ⚠️ projects.js DOIT être avant main.js -->
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
 </body>

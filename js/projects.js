@@ -11,17 +11,75 @@
 
 // ── 1. INFOS PERSONNELLES ───────────────────────────────────
 const SITE_CONFIG = {
-    name: "Bastien Motte",
-    title: "Développeur Gameplay Junior",
-    bio: "Passionné par la conception de mécaniques de jeu et le " +
+    name:     "Bastien Motte",
+    title:    "Développeur Gameplay Junior",
+    title_en: "Junior Gameplay Developer",
+    bio:
+        "Passionné par la conception de mécaniques de jeu et le " +
         "développement de systèmes gameplay, je m'épanouis en créant " +
         "des expériences audiovisuelles interactives. Étudiant en " +
         "Bachelor Développeur Informatique option Jeu Vidéo, je " +
         "recherche une alternance pour les années 2026/2027 et 2027/2028.",
-    email: "b.motte2002@gmail.com",
-    github: "https://github.com/Mellias-dev",          // ← remplace par ton vrai pseudo GitHub
+    bio_en:
+        "Passionate about gameplay mechanics design and game systems development, " +
+        "I thrive building interactive audiovisual experiences. Currently studying " +
+        "for a Bachelor's in Game Development, I am looking for a work-study " +
+        "contract for 2026/2027 and 2027/2028.",
+    email:    "b.motte2002@gmail.com",
+    github:   "https://github.com/Mellias-dev",
     linkedin: "https://linkedin.com/in/bastien-motte-42522524a",
-    cv: "cv.pdf",
+    cv:       "cv.pdf",
+};
+
+
+// ── 2. TRADUCTIONS UI ────────────────────────────────────────
+// Textes statiques du site en français et en anglais.
+// Les descriptions de projets restent dans la langue où elles sont écrites.
+const TRANSLATIONS = {
+    fr: {
+        nav_projects:      "Projets",
+        nav_skills:        "Compétences",
+        nav_contact:       "Contact",
+        nav_cv:            "Télécharger le CV",
+        about_label:       "À propos",
+        hero_cta:          "Voir mes projets",
+        skills_label:      "Compétences",
+        skills_title:      "Technologies maîtrisées",
+        portfolio_label:   "Portfolio",
+        projects_title:    "Mes projets",
+        projects_subtitle: "Cliquez sur un projet pour voir les captures d'écran, vidéos et description complète.",
+        card_cta:          "Voir le projet →",
+        contact_label:     "Contact",
+        contact_title:     "Me contacter",
+        contact_intro:     "Disponible pour des stages, alternances et opportunités en développement gameplay.",
+        cv_label:          "CV",
+        cv_value:          "Télécharger →",
+        github_value:      "Voir mes repos →",
+        linkedin_value:    "Mon profil →",
+        footer_credit:     "Fait avec HTML, CSS & JS · Hébergé sur GitHub Pages",
+    },
+    en: {
+        nav_projects:      "Projects",
+        nav_skills:        "Skills",
+        nav_contact:       "Contact",
+        nav_cv:            "Download CV",
+        about_label:       "About",
+        hero_cta:          "See my projects",
+        skills_label:      "Skills",
+        skills_title:      "Tech stack",
+        portfolio_label:   "Portfolio",
+        projects_title:    "My projects",
+        projects_subtitle: "Click on a project to view screenshots, videos and full description.",
+        card_cta:          "View project →",
+        contact_label:     "Contact",
+        contact_title:     "Get in touch",
+        contact_intro:     "Available for internships, work-study contracts and gameplay development opportunities.",
+        cv_label:          "Resume",
+        cv_value:          "Download →",
+        github_value:      "My repos →",
+        linkedin_value:    "My profile →",
+        footer_credit:     "Built with HTML, CSS & JS · Hosted on GitHub Pages",
+    },
 };
 
 
