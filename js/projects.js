@@ -153,9 +153,9 @@ const PROJECTS = [
             "la résistance et le comportement à la fracture des matériaux.\n\n" +
             "Un build jouable est disponible directement dans le repo (AngryBird.zip).",
         images: [
-            "img/projects/happy_bird/screen1.png",
-            "img/projects/happy_bird/screen2.png",
-            "img/projects/happy_bird/screen3.png",
+            "img/projects/happy-bird/screen1.jpg",
+            "img/projects/happy-bird/screen2.jpg",
+            "img/projects/happy-bird/screen3.jpg",
         ],
         video: null,
         github: "https://github.com/Meliass-games/AngryBirds-Like",
@@ -320,7 +320,7 @@ const PROJECTS = [
             "tirs implémentés par raycast, caméra Cinemachine avec headbob dynamique " +
             "pour renforcer le game feel.\n\n",
         images: [
-            "img/projects/fps-training-ground/screen1.png",
+            "img/projects/fps-training-ground/screen1.png", 
             "img/projects/fps-training-ground/screen2.png",
             "img/projects/fps-training-ground/screen3.png",
         ],
