@@ -185,7 +185,7 @@ const PROJECTS = [
         images: [
 
         ],
-        video: "https://www.youtube.com/embed/S_m_3fjFAps",
+        video: "https://www.youtube.com/embed/S_m_3fjFAps?si=d3uiaSsaiTAzFwQS",
         github: "https://github.com/Meliass-games/CloneGame",
         featured: true,
     },
