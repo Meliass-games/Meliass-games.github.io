@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio — Développeur Gameplay</title>
   <meta name="description" content="Portfolio développeur gameplay" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,9 +22,23 @@
     </div>
     <div class="nav-right">
       <button class="btn btn-lang" id="lang-toggle" aria-label="Switch language">EN</button>
-      <a href="cv.pdf" download class="btn btn-primary" id="nav-cv-link" data-i18n="nav_cv">
-        Télécharger le CV
-      </a>
+      <!-- Bouton CV avec dropdown -->
+      <div class="cv-dropdown-wrapper" id="cv-dropdown-wrapper">
+        <button class="btn btn-primary cv-trigger" id="nav-cv-btn" data-i18n="nav_cv">
+          Télécharger le CV
+        </button>
+        <div class="cv-dropdown" id="cv-dropdown" hidden>
+          <p class="cv-dropdown-title" data-i18n="cv_picker_title">Choisir la langue du CV</p>
+          <a class="cv-dropdown-item" id="cv-dl-fr">
+            <span class="cv-flag">🇫🇷</span>
+            <span data-i18n="cv_fr_label">Version française</span>
+          </a>
+          <a class="cv-dropdown-item" id="cv-dl-en">
+            <span class="cv-flag">🇬🇧</span>
+            <span data-i18n="cv_en_label">English version</span>
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -53,9 +65,7 @@
     <div class="container">
       <p class="eyebrow"><span class="mono">02</span> <span data-i18n="skills_label">Compétences</span></p>
       <h2 class="section-title" data-i18n="skills_title">Technologies maîtrisées</h2>
-      <div class="skills-grid" id="skills-grid">
-        <!-- Rempli automatiquement depuis SKILLS dans js/projects.js -->
-      </div>
+      <div class="skills-grid" id="skills-grid"></div>
     </div>
   </section>
 
@@ -67,9 +77,7 @@
       <p class="section-subtitle" data-i18n="projects_subtitle">
         Cliquez sur un projet pour voir les captures d'écran, vidéos et description complète.
       </p>
-      <div class="projects-grid" id="projects-grid">
-        <!-- Rempli automatiquement depuis PROJECTS dans js/projects.js -->
-      </div>
+      <div class="projects-grid" id="projects-grid"></div>
     </div>
   </section>
 
@@ -94,10 +102,11 @@
           <span class="contact-card-label">LinkedIn</span>
           <span class="contact-card-value" data-i18n="linkedin_value">Mon profil →</span>
         </a>
-        <a href="cv.pdf" download class="contact-card" id="contact-cv-link">
+        <!-- CV card → ouvre le même picker -->
+        <button class="contact-card cv-trigger" id="contact-cv-card">
           <span class="contact-card-label" data-i18n="cv_label">CV</span>
           <span class="contact-card-value" data-i18n="cv_value">Télécharger →</span>
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -108,23 +117,43 @@
     <p class="footer-credit" data-i18n="footer_credit">Fait avec HTML, CSS &amp; JS · Hébergé sur GitHub Pages</p>
   </footer>
 
+  <!-- ══════════════════════════ CV PICKER (global) ══════ -->
+  <!-- Popup centré qui apparaît depuis n'importe quel déclencheur CV -->
+  <div class="cv-picker-overlay" id="cv-picker-overlay" hidden>
+    <div class="cv-picker" id="cv-picker">
+      <p class="cv-picker-title" data-i18n="cv_picker_title">Choisir la langue du CV</p>
+      <a class="cv-picker-item" id="cv-picker-fr">
+        <span class="cv-picker-flag">🇫🇷</span>
+        <div>
+          <strong data-i18n="cv_fr_label">Version française</strong>
+          <span class="cv-picker-filename" id="cv-picker-fr-name">cv.pdf</span>
+        </div>
+      </a>
+      <a class="cv-picker-item" id="cv-picker-en">
+        <span class="cv-picker-flag">🇬🇧</span>
+        <div>
+          <strong data-i18n="cv_en_label">English version</strong>
+          <span class="cv-picker-filename" id="cv-picker-en-name">cv-en.pdf</span>
+        </div>
+      </a>
+      <button class="cv-picker-close" id="cv-picker-close">✕</button>
+    </div>
+  </div>
+
   <!-- ══════════════════════════ MODAL ═══════════════ -->
   <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-
       <button class="modal-close" id="modal-close" aria-label="Fermer">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-
       <div class="modal-media" id="modal-media">
         <div class="carousel-track" id="carousel-track"></div>
         <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Précédent">&#8249;</button>
         <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Suivant">&#8250;</button>
         <div class="carousel-dots" id="carousel-dots"></div>
       </div>
-
       <div class="modal-body">
         <div class="modal-header">
           <div class="modal-meta">
@@ -138,11 +167,9 @@
         </div>
         <p class="modal-description" id="modal-description"></p>
       </div>
-
     </div>
   </div>
 
-  <!-- ⚠️ projects.js DOIT être avant main.js -->
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
 </body>

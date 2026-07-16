@@ -173,6 +173,101 @@ a { color: inherit; }
   color: var(--accent);
 }
 
+/* ── CV Picker overlay ────────────────────────────────────── */
+.cv-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(35, 18, 6, .5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.cv-picker-overlay[hidden] { display: none; }
+
+.cv-picker {
+  position: relative;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  box-shadow: var(--shadow-lg);
+  min-width: 300px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.cv-picker-title {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 16px;
+}
+
+.cv-picker-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  margin-bottom: 10px;
+}
+.cv-picker-item:last-of-type { margin-bottom: 0; }
+.cv-picker-item:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.cv-picker-flag { font-size: 1.6rem; line-height: 1; }
+
+.cv-picker-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.cv-picker-filename {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--text-tertiary);
+}
+
+.cv-picker-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: .9rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition);
+}
+.cv-picker-close:hover { color: var(--text-primary); }
+
+/* Contact CV card → bouton sans style de bouton */
+button.contact-card {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
 .nav-logo {
   font-family: var(--font-display);
   font-weight: 700;
