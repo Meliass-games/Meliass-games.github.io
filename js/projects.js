@@ -181,9 +181,11 @@ const PROJECTS = [
             "(leviers, plaques de pression) depuis des angles de caméra différents.\n\n" +
             "Défi technique principal : la gestion de l'état différé (enregistrement " +
             "des inputs, replay temporisé) et la synchronisation des interactions " +
-            "physiques entre les deux personnages.",
+            "physiques entre les deux personnages." +
+            "https://www.youtube.com/watch?v=S_m_3fjFAps",
         images: [
-
+            "img/projects/clone-game/screen1.png",
+            "img/projects/clone-game/screen2.png",
         ],
         video: "https://www.youtube.com/embed/S_m_3fjFAps?si=d3uiaSsaiTAzFwQS",
         github: "https://github.com/Meliass-games/CloneGame",
