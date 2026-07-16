@@ -152,7 +152,11 @@ const PROJECTS = [
             "et les structures utilisent des Physics Materials pour définir " +
             "la résistance et le comportement à la fracture des matériaux.\n\n" +
             "Un build jouable est disponible directement dans le repo (AngryBird.zip).",
-        images: [],
+        images: [
+            "img/projects/happy-bird/screen1.png",
+            "img/projects/happy-bird/screen2.png",
+            "img/projects/happy-bird/screen3.png",
+        ],
         video: null,
         github: "https://github.com/Meliass-games/AngryBirds-Like",
         featured: false,
@@ -179,9 +183,7 @@ const PROJECTS = [
             "des inputs, replay temporisé) et la synchronisation des interactions " +
             "physiques entre les deux personnages.",
         images: [
-            "img/projects/happy-bird/screen1.png",
-            "img/projects/happy-bird/screen2.png",
-            "img/projects/happy-bird/screen3.png",
+
         ],
         video: "https://www.youtube.com/watch?v=S_m_3fjFAps",
         github: "https://github.com/Meliass-games/CloneGame",
