@@ -320,9 +320,9 @@ const PROJECTS = [
             "tirs implémentés par raycast, caméra Cinemachine avec headbob dynamique " +
             "pour renforcer le game feel.\n\n",
         images: [
-            "img/projects/fps-training-ground/screen1.png", 
-            "img/projects/fps-training-ground/screen2.png",
-            "img/projects/fps-training-ground/screen3.png",
+            "img/projects/fps-training-ground/screen1.jpg", 
+            "img/projects/fps-training-ground/screen2.jpg",
+            "img/projects/fps-training-ground/screen3.jpg",
         ],
         video: null,
         github: "https://github.com/Meliass-games/FPS-Project",
